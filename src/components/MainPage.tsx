@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Wrapper } from './styles/Wrapper.styled';
 import {
   MainContent,
@@ -17,6 +18,12 @@ import {
 import { FormInput } from './styles/FormInput.styled';
 
 const MainPage = () => {
+  const navigate = useNavigate();
+
+  const handleStartClick = () => {
+    navigate('/create');
+  };
+
   return (
     <Wrapper>
       <MainContent>
@@ -47,7 +54,9 @@ const MainPage = () => {
           <FormLabel htmlFor='email'>Email</FormLabel>
           <FormInput type='email' id='email' placeholder='tim.jennings@example.com' />
         </FormBlock>
-        <FormButton id='button-start'>Начать</FormButton>
+        <FormButton id='button-start' onClick={handleStartClick}>
+          Начать
+        </FormButton>
       </MainContent>
     </Wrapper>
   );
