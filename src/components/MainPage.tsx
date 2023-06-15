@@ -9,7 +9,12 @@ import {
   Link,
   InfoContainer,
   LinkIcon,
+  Line,
+  FormBlock,
+  FormButton,
+  FormLabel,
 } from './styles/MainPage.styled';
+import { FormInput } from './styles/FormInput.styled';
 
 const MainPage = () => {
   return (
@@ -35,8 +40,14 @@ const MainPage = () => {
             </Links>
           </InfoContainer>
         </ProfileBlock>
-        <div className='separator-line'></div>
-        <div className='form-block'>{/* Forms and button */}</div>
+        <Line />
+        <FormBlock>
+          <FormLabel htmlFor='phone'>Номер телефона</FormLabel>
+          <FormInput type='tel' id='phone' placeholder='+ 7 999 999-99-99' />
+          <FormLabel htmlFor='email'>Email</FormLabel>
+          <FormInput type='email' id='email' placeholder='tim.jennings@example.com' />
+        </FormBlock>
+        <FormButton id='button-start'>Начать</FormButton>
       </MainContent>
     </Wrapper>
   );
