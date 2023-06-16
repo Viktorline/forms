@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   /* justify-content: center;
   align-items: center; */
   max-width: 900px;
-  height: 704px;
+  min-height: 704px;
   margin: 24px auto 0;
   background-color: #ffffff;
   border-radius: 12px;

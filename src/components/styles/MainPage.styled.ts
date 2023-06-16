@@ -83,10 +83,6 @@ export const FormBlock = styled.div`
   margin-bottom: 23px;
 `;
 
-export const FormLabel = styled.label`
-  margin-bottom: 7px;
-`;
-
 export const FormButton = styled.button`
   padding: 10px;
   background-color: #5558fa;

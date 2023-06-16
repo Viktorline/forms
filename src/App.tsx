@@ -1,22 +1,26 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GlobalStyles from './components/styles/Global';
+import { Helmet } from 'react-helmet';
 
 import MainPage from './components/MainPage';
 import CreatePage from './components/CreatePage';
-// import Step2Page from './components/Step2Page';
-// import Step3Page from './components/Step3Page';
 
 const App = () => {
   return (
     <React.Fragment>
+      <Helmet>
+        <link
+          href='//db.onlinewebfonts.com/c/37086b994764dba84b2ee0f1083bfeed?family=SB+Sans+Interface'
+          rel='stylesheet'
+          type='text/css'
+        />
+      </Helmet>
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<MainPage />} />
           <Route path='/create' element={<CreatePage />} />
-          {/* <Route path='/step2' element={<Step2Page />} />
-          <Route path='/step3' element={<Step3Page />} /> */}
         </Routes>
       </BrowserRouter>
     </React.Fragment>

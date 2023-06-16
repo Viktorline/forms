@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const FormLabel = styled.label`
+  margin-bottom: 7px;
+`;
+
 export const FormInput = styled.input`
   padding: 10px;
   margin-bottom: 10px;

@@ -13,9 +13,8 @@ import {
   Line,
   FormBlock,
   FormButton,
-  FormLabel,
 } from './styles/MainPage.styled';
-import { FormInput } from './styles/FormInput.styled';
+import { FormInput, FormLabel } from './styles/FormInput.styled';
 
 const MainPage = () => {
   const navigate = useNavigate();
