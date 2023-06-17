@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FaFolder } from 'react-icons/fa';
+import InputMask from 'react-input-mask';
 
 export const MainContent = styled.div`
   display: flex;
@@ -9,6 +10,7 @@ export const MainContent = styled.div`
   width: 100%;
   height: 100%;
   padding: 24px;
+  margin-bottom: 245px;
 `;
 
 export const ProfileBlock = styled.div`
@@ -75,12 +77,13 @@ export const Line = styled.div`
 
 ///////////////////////////////////////////////////////////
 
-export const FormBlock = styled.div`
+export const FormBlock = styled.form`
   display: flex;
   flex-direction: column;
   font-size: 14px;
   width: 100%;
   margin-bottom: 23px;
+  position: relative;
 `;
 
 export const FormButton = styled.button`
@@ -92,4 +95,50 @@ export const FormButton = styled.button`
   cursor: pointer;
   width: 79px;
   height: 44px;
+
+  &:hover {
+    background-color: #3f41b3;
+  }
+
+  &:active {
+    background-color: #2c2e8c;
+  }
+`;
+
+export const FormHelperText = styled.p`
+  line-height: 1;
+  font-size: 11px;
+`;
+
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 0px;
+
+  .error {
+    border-color: red;
+  }
+
+  .error-message {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: red;
+  }
+`;
+
+export const StyledInputMask = styled(InputMask)`
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+  height: 44px;
+  margin-bottom: 25px;
+`;
+
+export const Forms = styled.div`
+  margin-bottom: 23px;
 `;

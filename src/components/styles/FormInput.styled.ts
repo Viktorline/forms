@@ -14,3 +14,8 @@ export const FormInput = styled.input`
   height: 44px;
   margin-bottom: 25px;
 `;
+
+export const FormHelperText = styled.p`
+  line-height: 1;
+  font-size: 11px;
+`;
