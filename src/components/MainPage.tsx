@@ -1,7 +1,11 @@
 import React from 'react';
+import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { updateData } from '../features/userSlice';
+
 import { Wrapper } from './styles/Wrapper.styled';
 import {
   MainContent,
@@ -18,22 +22,19 @@ import {
   FormButton,
   FormHelperText,
   FormContainer,
-  StyledInputMask,
   FormInput,
   FormLabel,
+  MaskedInput,
 } from './styles/MainPage.styled';
-import { updateData } from '../features/userSlice';
-import * as Yup from 'yup';
 
 const MainPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const { email, phone } = useSelector(
     (state: { user: { email: string; phone: string } }) => state.user
   );
 
-  const validationSchema = Yup.object().shape({
+  const validationSchema = Yup.object({
     phone: Yup.string()
       .matches(
         /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/,
@@ -51,7 +52,6 @@ const MainPage = () => {
     validationSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log(values);
       dispatch(updateData(values));
       navigate('/create');
     },
@@ -85,7 +85,7 @@ const MainPage = () => {
           <Forms>
             <FormContainer>
               <FormLabel htmlFor='phone'>Phone Number</FormLabel>
-              <StyledInputMask
+              <MaskedInput
                 type='tel'
                 id='phone'
                 placeholder='+ 7 (999) 999-99-99'
@@ -94,11 +94,10 @@ const MainPage = () => {
                 mask='+7 (999) 999-99-99'
                 className={formik.touched.phone && formik.errors.phone ? 'error' : undefined}
               />
-              <FormHelperText className='error-message'>
-                {formik.touched.phone && formik.errors.phone ? formik.errors.phone : ''}
-              </FormHelperText>
+              {formik.touched.phone && formik.errors.phone && (
+                <FormHelperText className='error-message'>{formik.errors.phone}</FormHelperText>
+              )}
             </FormContainer>
-
             <FormContainer>
               <FormLabel htmlFor='email'>Email</FormLabel>
               <FormInput
@@ -114,7 +113,6 @@ const MainPage = () => {
               </FormHelperText>
             </FormContainer>
           </Forms>
-
           <FormButton type='submit' id='button-start'>
             Start
           </FormButton>

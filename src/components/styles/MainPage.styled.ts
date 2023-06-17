@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { FaFolder } from 'react-icons/fa';
 import InputMask from 'react-input-mask';
+import { BaseButton, BaseInput } from './BaseStyles';
 
 export const MainContent = styled.div`
   display: flex;
@@ -75,8 +76,6 @@ export const Line = styled.div`
   margin-bottom: 24px;
 `;
 
-///////////////////////////////////////////////////////////
-
 export const FormBlock = styled.form`
   display: flex;
   flex-direction: column;
@@ -86,7 +85,7 @@ export const FormBlock = styled.form`
   position: relative;
 `;
 
-export const FormButton = styled.button`
+export const FormButton = styled(BaseButton)`
   padding: 10px;
   background-color: #5558fa;
   color: white;
@@ -128,29 +127,28 @@ export const Forms = styled.div`
   margin-bottom: 23px;
 `;
 
-export const StyledInputMask = styled(InputMask)`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  max-width: 400px;
-  height: 44px;
-  margin-bottom: 25px;
-`;
-
 export const FormLabel = styled.label`
   margin-bottom: 7px;
 `;
 
-export const FormInput = styled.input`
+export const FormInput = styled(BaseInput)`
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
   max-width: 400px;
   height: 44px;
+`;
+
+export const MaskedInput = styled(InputMask)`
+  padding: 10px;
   margin-bottom: 25px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+  height: 44px;
 `;
 
 export const FormHelperText = styled.p`
