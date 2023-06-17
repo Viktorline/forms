@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
+import { store } from '../../app/store';
 
 import {
   FormBlock,
@@ -17,6 +18,7 @@ type StepProps = {
   onSend: () => void;
   onBack: () => void;
 };
+console.log(store.getState());
 
 const Step3: React.FC<StepProps> = ({ onSend, onBack }) => {
   const [about, setAbout] = useState('');
@@ -34,6 +36,7 @@ const Step3: React.FC<StepProps> = ({ onSend, onBack }) => {
   const handleSend = async () => {
     try {
       setIsModalOpen(true);
+      console.log(store.getState());
     } catch (error) {
       console.error('Failed to send request:');
     }

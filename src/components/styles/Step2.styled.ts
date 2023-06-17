@@ -16,7 +16,7 @@ export const MainContent = styled.div`
   color: #333333;
 `;
 
-export const FormBlock = styled.div`
+export const FormBlock = styled.form`
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -92,6 +92,8 @@ export const CheckboxGroup = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 5px;
 `;
 
 export const Checkbox = styled.div`
@@ -132,4 +134,37 @@ export const Controls = styled.div`
   justify-content: space-between;
   align-items: start;
   padding: 39px 0;
+`;
+
+export const FormHelperText = styled.p`
+  position: absolute;
+  color: red;
+  bottom: 0;
+  line-height: 1;
+  font-size: 11px;
+  cursor: pointer;
+`;
+
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 0px;
+
+  .error {
+    border-color: red;
+  }
+
+  .error-message {
+    color: red;
+  }
+`;
+
+export const Forms = styled.div`
+  margin-bottom: 23px;
+`;
+
+export const Advantage = styled.div`
+  width: 100%;
 `;
