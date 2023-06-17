@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
 import { store } from '../../app/store';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateData, sendFormData, prepareFormData } from '../../features/userSlice';
+import { AppDispatch } from '../../app/store';
 
 import {
   FormBlock,
@@ -12,54 +17,112 @@ import {
   FormHelper,
   CharCount,
   FormHelperText,
+  Forms,
 } from '../styles/Step3.styled';
 
 type StepProps = {
-  onSend: () => void;
   onBack: () => void;
 };
-console.log(store.getState());
 
-const Step3: React.FC<StepProps> = ({ onSend, onBack }) => {
-  const [about, setAbout] = useState('');
+const Step3: React.FC<StepProps> = ({ onBack }) => {
+  const dispatch = useDispatch<AppDispatch>();
+
   const [charCount, setCharCount] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalState, setModalState] = useState<{
+    isOpen: boolean;
+    message: string;
+    successful: boolean;
+  }>({
+    isOpen: false,
+    message: '',
+    successful: true,
+  });
+
+  const { about: initialAbout } = useSelector((state: { user: { about: string } }) => state.user);
+
+  const validationSchema = Yup.object().shape({
+    about: Yup.string().required('About is required').max(200, 'Maximum length 200 characters'),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      about: initialAbout || '',
+    },
+    enableReinitialize: true,
+    validationSchema,
+    onSubmit: (values) => {
+      dispatch(updateData(values));
+      const data = store.getState().user;
+      const finalData = prepareFormData(data);
+      dispatch(sendFormData(finalData))
+        .then((data) => {
+          console.log(data);
+          setModalState({ isOpen: true, message: 'Submitted successfully!', successful: true });
+        })
+        .catch((error) => {
+          setModalState({ isOpen: true, message: 'Something went wrong', successful: false });
+          console.error('Failed to send request:', error);
+        });
+    },
+  });
 
   const handleAboutChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = event.target.value;
-    setAbout(text);
-
-    const noSpacesText = text.replace(/\s/g, '');
-    setCharCount(noSpacesText.length);
+    formik.handleChange(event);
+    const count = text.replace(/\s/g, '').length;
+    setCharCount(count);
   };
 
-  const handleSend = async () => {
-    try {
-      setIsModalOpen(true);
-      console.log(store.getState());
-    } catch (error) {
-      console.error('Failed to send request:');
-    }
-  };
+  useEffect(() => {
+    setCharCount(formik.values.about.length);
+  }, [formik.values.about]);
 
   return (
     <MainContent>
-      <FormBlock>
-        <FormLabel>About</FormLabel>
-        <TextArea value={about} onChange={handleAboutChange} />
-        <FormHelper>
-          <FormHelperText>Tip</FormHelperText>
-          <CharCount>{charCount}</CharCount>
-        </FormHelper>
-        <Controls>
-          <FormButton variant='back' id='button-back' onClick={onBack}>
-            Назад
-          </FormButton>
-          <FormButton variant='send' id='button-next' onClick={handleSend}>
-            Send
-          </FormButton>
-        </Controls>
-        {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
+      {modalState && (
+        <Modal
+          isOpen={modalState.isOpen}
+          onClose={() => setModalState({ isOpen: false, message: '', successful: true })}
+          message={modalState.message}
+          successful={modalState.successful}
+        />
+      )}
+      <FormBlock onSubmit={formik.handleSubmit}>
+        <Forms>
+          <FormLabel>About</FormLabel>
+          <TextArea
+            name='about'
+            value={formik.values.about}
+            onChange={handleAboutChange}
+            onBlur={formik.handleBlur}
+            placeholder='Enter something about yourself'
+            className={formik.touched.about && formik.errors.about ? 'error' : undefined}
+          />
+          <FormHelper>
+            <FormHelperText
+              title='Maximum length 200 characters'
+              className={formik.touched.about && formik.errors.about ? 'error' : undefined}
+            >
+              {' '}
+              {formik.touched.about && formik.errors.about ? (
+                <>
+                  Tip <span className='error-message'>{formik.errors.about}</span>
+                </>
+              ) : (
+                'Tip'
+              )}
+            </FormHelperText>
+            <CharCount>{charCount}</CharCount>
+          </FormHelper>
+          <Controls>
+            <FormButton variant='back' id='button-back' type='button' onClick={onBack}>
+              Previous
+            </FormButton>
+            <FormButton variant='send' id='button-next' type='submit'>
+              Send
+            </FormButton>
+          </Controls>
+        </Forms>
       </FormBlock>
     </MainContent>
   );

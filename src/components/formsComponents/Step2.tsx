@@ -3,7 +3,6 @@ import { useFormik, FormikContextType } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateData } from '../../features/userSlice';
-import { store } from '../../app/store';
 
 import {
   FormBlock,
@@ -82,7 +81,6 @@ const Step2: React.FC<StepProps> = ({ onNext, onBack }) => {
     validationSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log(store.getState());
       dispatch(updateData(values));
       onNext();
     },

@@ -15,7 +15,6 @@ import {
 } from '../styles/Step1.styled';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { store } from '../../app/store';
 
 type StepProps = {
   onNext: () => void;
@@ -49,7 +48,6 @@ const Step1: React.FC<StepProps> = ({ onNext }) => {
       .required('Surname is required'),
     sex: Yup.string().oneOf(['man', 'woman'], 'Invalid sex').required('Sex is required'),
   });
-  console.log(store.getState());
 
   const formik = useFormik({
     initialValues: {
@@ -61,7 +59,6 @@ const Step1: React.FC<StepProps> = ({ onNext }) => {
     validationSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log(store.getState());
       dispatch(updateData(values));
       onNext();
     },

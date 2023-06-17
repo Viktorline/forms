@@ -16,7 +16,7 @@ export const ModalContainer = styled.div`
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #fff;
   width: 460px;
@@ -24,15 +24,23 @@ export const ModalContent = styled.div`
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
 `;
 
 export const FormButton = styled.button`
   padding: 10px;
   border-radius: 4px;
   cursor: pointer;
-  width: 73px;
+  width: 110px;
   height: 44px;
   background-color: #5558fa;
   color: white;
   border: none;
+  margin-bottom: 10px;
 `;

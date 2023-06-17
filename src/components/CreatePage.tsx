@@ -21,11 +21,6 @@ const CreatePage = () => {
     dispatch(previousStep());
   };
 
-  const handleRequest = () => {
-    //////////////////////////
-    console.log(1);
-  };
-
   return (
     <Wrapper>
       <SliderWrapper>
@@ -37,7 +32,7 @@ const CreatePage = () => {
       </SliderWrapper>
       {step === 1 && <Step1 onNext={handleNext} />}
       {step === 2 && <Step2 onNext={handleNext} onBack={handlePrevious} />}
-      {step === 3 && <Step3 onBack={handlePrevious} onSend={handleRequest} />}
+      {step === 3 && <Step3 onBack={handlePrevious} />}
     </Wrapper>
   );
 };

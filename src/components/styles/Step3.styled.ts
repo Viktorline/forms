@@ -15,7 +15,7 @@ export const MainContent = styled.div`
   color: #333333;
 `;
 
-export const FormBlock = styled.div`
+export const FormBlock = styled.form`
   display: flex;
   flex-direction: column;
   font-size: 14px;
@@ -75,10 +75,24 @@ export const CharCount = styled.span`
 export const FormHelperText = styled.p`
   line-height: 1;
   font-size: 11px;
+  cursor: pointer;
+
   /* margin-bottom: 27px; */
 `;
 export const FormHelper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: start;
+
+  .error {
+    border-color: red;
+  }
+
+  .error-message {
+    color: red;
+  }
+`;
+
+export const Forms = styled.div`
+  margin-bottom: 0px;
 `;

@@ -8,10 +8,11 @@ export const stepSlice = createSlice({
   reducers: {
     nextStep: (state) => state + 1,
     previousStep: (state) => (state > 1 ? state - 1 : state),
+    resetStep: () => initialState,
   },
 });
 
-export const { nextStep, previousStep } = stepSlice.actions;
+export const { nextStep, previousStep, resetStep } = stepSlice.actions;
 
 export const selectStep = (state: { step: number }) => state.step;
 
