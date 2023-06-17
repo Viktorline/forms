@@ -14,7 +14,7 @@ import {
   FormContainer,
 } from '../styles/Step1.styled';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import { step1ValidationSchema } from '../utils/validationSchemas';
 
 type StepProps = {
   onNext: () => void;
@@ -33,22 +33,6 @@ const Step1: React.FC<StepProps> = ({ onNext }) => {
     navigate('/');
   };
 
-  const validationSchema = Yup.object().shape({
-    nickname: Yup.string()
-      .max(30, 'Nickname must be at most 30 characters long')
-      .matches(/^[a-zA-Z0-9]+$/, 'Nickname can only contain letters and numbers')
-      .required('Nickname is required'),
-    name: Yup.string()
-      .max(50, 'Name must be at most 50 characters long')
-      .matches(/^[a-zA-Z]+$/, 'Name can only contain letters')
-      .required('Name is required'),
-    surname: Yup.string()
-      .max(50, 'Surname must be at most 50 characters long')
-      .matches(/^[a-zA-Z]+$/, 'Surname can only contain letters')
-      .required('Surname is required'),
-    sex: Yup.string().oneOf(['man', 'woman'], 'Invalid sex').required('Sex is required'),
-  });
-
   const formik = useFormik({
     initialValues: {
       nickname: nickname || '',
@@ -56,7 +40,7 @@ const Step1: React.FC<StepProps> = ({ onNext }) => {
       surname: surname || '',
       sex: sex || '',
     },
-    validationSchema,
+    validationSchema: step1ValidationSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
       dispatch(updateData(values));
@@ -78,6 +62,7 @@ const Step1: React.FC<StepProps> = ({ onNext }) => {
               onChange={formik.handleChange}
               value={formik.values.nickname}
               className={formik.touched.nickname && formik.errors.nickname ? 'error' : undefined}
+              autoComplete='off'
             />
             <FormHelperText
               title='Nickname must be at most 30 characters long'
@@ -102,6 +87,7 @@ const Step1: React.FC<StepProps> = ({ onNext }) => {
               onChange={formik.handleChange}
               value={formik.values.name}
               className={formik.touched.name && formik.errors.name ? 'error' : undefined}
+              autoComplete='off'
             />
             <FormHelperText
               title='Name must be at most 50 characters long'
@@ -126,6 +112,7 @@ const Step1: React.FC<StepProps> = ({ onNext }) => {
               onChange={formik.handleChange}
               value={formik.values.surname}
               className={formik.touched.surname && formik.errors.surname ? 'error' : undefined}
+              autoComplete='off'
             />
             <FormHelperText
               title='Surname must be at most 50 characters long'

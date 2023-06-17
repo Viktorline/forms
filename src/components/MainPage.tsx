@@ -1,5 +1,4 @@
 import React from 'react';
-import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,6 +25,7 @@ import {
   FormLabel,
   MaskedInput,
 } from './styles/MainPage.styled';
+import { mainPageValidationSchema } from './utils/validationSchemas';
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -34,22 +34,12 @@ const MainPage = () => {
     (state: { user: { email: string; phone: string } }) => state.user
   );
 
-  const validationSchema = Yup.object({
-    phone: Yup.string()
-      .matches(
-        /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/,
-        'Phone number must be in the format: +7 (900) 000-00-00'
-      )
-      .required('Phone number is required'),
-    email: Yup.string().email('Invalid email format').required('Email is required'),
-  });
-
   const formik = useFormik({
     initialValues: {
       phone: phone || '',
       email: email || '',
     },
-    validationSchema,
+    validationSchema: mainPageValidationSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
       dispatch(updateData(values));
@@ -93,6 +83,7 @@ const MainPage = () => {
                 value={formik.values.phone}
                 mask='+7 (999) 999-99-99'
                 className={formik.touched.phone && formik.errors.phone ? 'error' : undefined}
+                autoComplete='off'
               />
               {formik.touched.phone && formik.errors.phone && (
                 <FormHelperText className='error-message'>{formik.errors.phone}</FormHelperText>
@@ -107,6 +98,7 @@ const MainPage = () => {
                 onChange={formik.handleChange}
                 value={formik.values.email}
                 className={formik.touched.email && formik.errors.email ? 'error' : undefined}
+                autoComplete='off'
               />
               <FormHelperText className='error-message'>
                 {formik.touched.email && formik.errors.email ? formik.errors.email : ''}

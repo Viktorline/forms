@@ -9,6 +9,17 @@ type SliderProps = {
   activeStep: number;
 };
 
+const calculateWidth = (activeStep: number) => {
+  switch (activeStep) {
+    case 1:
+      return '0%';
+    case 2:
+      return '50%';
+    default:
+      return '99%';
+  }
+};
+
 export const SliderWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -30,7 +41,7 @@ export const Slider = styled.div<SliderProps>`
     position: absolute;
     top: 4px;
     left: 4px;
-    width: ${({ activeStep }) => (activeStep === 1 ? '0%' : activeStep === 2 ? '50%' : '99%')};
+    width: ${({ activeStep }) => calculateWidth(activeStep)};
     height: 8px;
     background: #5558fa;
     z-index: 1;

@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: #f4f4ff;
+    background: #f4f4f5;
     color: #212830;
     font-family: 'SB Sans Interface', sans-serif;
     font-size: 20px;

@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
 import { useFormik, FormikContextType } from 'formik';
-import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateData } from '../../features/userSlice';
 
@@ -23,6 +22,7 @@ import {
   FormHelperText,
   Advantage,
 } from '../styles/Step2.styled';
+import { step2ValidationSchema } from '../utils/validationSchemas';
 
 type StepProps = {
   onNext: () => void;
@@ -42,27 +42,6 @@ const Step2: React.FC<StepProps> = ({ onNext, onBack }) => {
     (state: { user: { advantages: any; checkboxGroup: string; radioGroup: string } }) => state.user
   );
 
-  const validationSchema = Yup.object().shape({
-    advantages: Yup.array()
-      .of(
-        Yup.object().shape({
-          id: Yup.number().required(),
-          value: Yup.string()
-            .required('At least 1 advantage is required')
-            .min(1, 'Advantage value must have at least 1 character'),
-        })
-      )
-      .required('Advantages are required')
-      .min(1, 'At least 1 advantages is required'),
-    checkboxGroup: Yup.array()
-      .of(Yup.string())
-      .required('Checkbox group is required')
-      .min(1, 'At least one checkbox should be selected'),
-    radioGroup: Yup.string()
-      .oneOf(['1', '2', '3'], 'Invalid radio group')
-      .required('Radio group is required'),
-  });
-
   const initializeAdvantagesField = useCallback(
     (formik: FormikContextType<FormValues>) => {
       if (advantages.length === 0) {
@@ -78,7 +57,7 @@ const Step2: React.FC<StepProps> = ({ onNext, onBack }) => {
       checkboxGroup: Array.isArray(checkboxGroup) ? checkboxGroup : [],
       radioGroup: radioGroup || '',
     },
-    validationSchema,
+    validationSchema: step2ValidationSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
       dispatch(updateData(values));
@@ -90,8 +69,6 @@ const Step2: React.FC<StepProps> = ({ onNext, onBack }) => {
     initializeAdvantagesField(formik);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // console.log(formik.errors);
 
   const handleAdd = () => {
     const newAdvantage = { id: formik.values.advantages.length + 1, value: '' };

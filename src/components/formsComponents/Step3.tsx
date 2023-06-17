@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Modal from './Modal';
 import { store } from '../../app/store';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateData, sendFormData, prepareFormData } from '../../features/userSlice';
 import { AppDispatch } from '../../app/store';
@@ -19,6 +18,7 @@ import {
   FormHelperText,
   Forms,
 } from '../styles/Step3.styled';
+import { step3ValidationSchema } from '../utils/validationSchemas';
 
 type StepProps = {
   onBack: () => void;
@@ -40,16 +40,12 @@ const Step3: React.FC<StepProps> = ({ onBack }) => {
 
   const { about: initialAbout } = useSelector((state: { user: { about: string } }) => state.user);
 
-  const validationSchema = Yup.object().shape({
-    about: Yup.string().required('About is required').max(200, 'Maximum length 200 characters'),
-  });
-
   const formik = useFormik({
     initialValues: {
       about: initialAbout || '',
     },
     enableReinitialize: true,
-    validationSchema,
+    validationSchema: step3ValidationSchema,
     onSubmit: (values) => {
       dispatch(updateData(values));
       const data = store.getState().user;
@@ -97,6 +93,7 @@ const Step3: React.FC<StepProps> = ({ onBack }) => {
             onBlur={formik.handleBlur}
             placeholder='Enter something about yourself'
             className={formik.touched.about && formik.errors.about ? 'error' : undefined}
+            autoComplete='off'
           />
           <FormHelper>
             <FormHelperText
