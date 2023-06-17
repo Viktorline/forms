@@ -19,8 +19,9 @@ import {
   FormHelperText,
   FormContainer,
   StyledInputMask,
+  FormInput,
+  FormLabel,
 } from './styles/MainPage.styled';
-import { FormInput, FormLabel } from './styles/FormInput.styled';
 import { updateData } from '../features/userSlice';
 import * as Yup from 'yup';
 
@@ -72,7 +73,7 @@ const MainPage = () => {
                 <LinkIcon />
                 GitHub
               </Link>
-              <Link href='/resume.pdf'>
+              <Link href='/resume.pdf' target='_blank' rel='noopener noreferrer'>
                 <LinkIcon />
                 Resume
               </Link>

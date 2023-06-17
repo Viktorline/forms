@@ -54,12 +54,23 @@ export const FormButton = styled.button<FormButtonProps>`
           background-color: #5558fa;
           color: white;
           border: none;
+          &:hover {
+            background-color: #3f41b3;
+          } 
         `
       : `
           background-color: white;
           color: #5558fa;
           border: 2px solid #5558fa;
+          &:hover {
+            background-color: rgba(63,65,179, 0.3);
+            border: 2px solid #3f41b3;
+          }
         `}
+
+  &:active {
+    background-color: #2c2e8c;
+  }
 `;
 
 export const FormAdvantagesButton = styled.button<FormButtonProps>`

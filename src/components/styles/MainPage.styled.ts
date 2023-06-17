@@ -105,11 +105,6 @@ export const FormButton = styled.button`
   }
 `;
 
-export const FormHelperText = styled.p`
-  line-height: 1;
-  font-size: 11px;
-`;
-
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -141,4 +136,24 @@ export const StyledInputMask = styled(InputMask)`
   max-width: 400px;
   height: 44px;
   margin-bottom: 25px;
+`;
+
+export const FormLabel = styled.label`
+  margin-bottom: 7px;
+`;
+
+export const FormInput = styled.input`
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+  height: 44px;
+  margin-bottom: 25px;
+`;
+
+export const FormHelperText = styled.p`
+  line-height: 1;
+  font-size: 11px;
 `;
