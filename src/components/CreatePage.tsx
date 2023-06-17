@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { nextStep, previousStep, selectStep } from '../features/stepSlice';
+import { FaCheck } from 'react-icons/fa';
 
 import { Wrapper } from './styles/Wrapper.styled';
 import { SliderWrapper, Slider, Step } from './styles/Stepper.styled';
@@ -24,10 +25,14 @@ const CreatePage = () => {
   return (
     <Wrapper>
       <SliderWrapper>
-        <Slider>
-          <Step number={1} />
-          <Step number={2} />
-          <Step number={3} />
+        <Slider activeStep={step}>
+          <Step activeStep={step} number={1}>
+            {step >= 2 && <FaCheck size={12} />}
+          </Step>
+          <Step activeStep={step} number={2}>
+            {step >= 3 && <FaCheck size={12} />}
+          </Step>
+          <Step activeStep={step} number={3}></Step>
         </Slider>
       </SliderWrapper>
       {step === 1 && <Step1 onNext={handleNext} />}

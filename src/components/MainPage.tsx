@@ -64,11 +64,11 @@ const MainPage = () => {
           <InfoContainer>
             <Name>Victor Murzin</Name>
             <Links>
-              <Link href='https://t.me/username'>
+              <Link href='https://t.me/victor_murzzz'>
                 <LinkIcon />
                 Telegram
               </Link>
-              <Link href='https://github.com/username'>
+              <Link href='https://github.com/Viktorline'>
                 <LinkIcon />
                 GitHub
               </Link>
