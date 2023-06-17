@@ -129,6 +129,10 @@ export const FormContainer = styled.div`
   }
 `;
 
+export const Forms = styled.div`
+  margin-bottom: 23px;
+`;
+
 export const StyledInputMask = styled(InputMask)`
   padding: 10px;
   border: 1px solid #ccc;
@@ -137,8 +141,4 @@ export const StyledInputMask = styled(InputMask)`
   max-width: 400px;
   height: 44px;
   margin-bottom: 25px;
-`;
-
-export const Forms = styled.div`
-  margin-bottom: 23px;
 `;

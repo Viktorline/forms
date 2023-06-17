@@ -15,14 +15,6 @@ export const MainContent = styled.div`
   color: #333333;
 `;
 
-export const FormBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  width: 100%;
-  margin-bottom: 23px;
-`;
-
 export const FormLabel = styled.label`
   margin-bottom: 7px;
 `;
@@ -34,12 +26,6 @@ export const FormInput = styled.input`
   width: 100%;
   max-width: 300px;
   height: 44px;
-`;
-
-export const FormHelperText = styled.p`
-  line-height: 1;
-  font-size: 11px;
-  margin-bottom: 27px;
 `;
 
 export const FormSelect = styled.select`
@@ -85,4 +71,46 @@ export const FormButton = styled.button<FormButtonProps>`
           color: #5558fa;
           border: 2px solid #5558fa;
         `}
+  &:hover {
+    background-color: #3f41b3;
+  }
+
+  &:active {
+    background-color: #2c2e8c;
+  }
+`;
+
+export const FormBlock = styled.form`
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 23px;
+  position: relative;
+`;
+
+export const FormHelperText = styled.p`
+  line-height: 1;
+  font-size: 11px;
+  cursor: pointer;
+`;
+
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 0px;
+
+  .error {
+    border-color: red;
+  }
+
+  .error-message {
+    color: red;
+  }
+`;
+
+export const Forms = styled.div`
+  margin-bottom: 23px;
 `;
