@@ -14,18 +14,6 @@ const initialState = {
   about: '',
 };
 
-const prepareFormData = (formData: any) => {
-  const advantages = formData.advantages.map((advantage: { value: string }) => advantage.value);
-  const checkboxGroup = formData.checkboxGroup.map((checkbox: [string]) => Number(checkbox));
-  const radioGroup = Number(formData.radioGroup);
-  return {
-    ...formData,
-    advantages,
-    checkboxGroup,
-    radioGroup,
-  };
-};
-
 const sendFormData = createAsyncThunk<void, any>('user/sendFormData', async (formData) => {
   try {
     const response = await axios.post(
@@ -53,6 +41,6 @@ const userSlice = createSlice({
 
 export const { updateData } = userSlice.actions;
 
-export { sendFormData, prepareFormData };
+export { sendFormData };
 
 export default userSlice.reducer;

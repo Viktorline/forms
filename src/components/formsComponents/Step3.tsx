@@ -3,8 +3,9 @@ import Modal from './Modal';
 import { store } from '../../app/store';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateData, sendFormData, prepareFormData } from '../../features/userSlice';
+import { updateData, sendFormData } from '../../features/userSlice';
 import { AppDispatch } from '../../app/store';
+import prepareFormData from '../utils/prepareFormData';
 
 import {
   FormBlock,
