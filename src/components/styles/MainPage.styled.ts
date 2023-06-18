@@ -111,6 +111,10 @@ export const LinkIcon = styled(FaFolder)`
   &:hover {
     color: #5558fa;
   }
+
+  @media (max-width: 550px) {
+    margin-right: 2px;
+  }
 `;
 
 export const Link = styled.a`
@@ -127,6 +131,10 @@ export const Link = styled.a`
 
   a:visited {
     color: #5558fa;
+  }
+
+  @media (max-width: 550px) {
+    margin-right: 7px;
   }
 `;
 

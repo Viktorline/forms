@@ -62,6 +62,10 @@ export const BaseMainContent = styled.div`
   width: 100%;
   height: 100%;
   padding: 24px 110px;
+
+  @media (max-width: 550px) {
+    padding: 24px 50px;
+  }
 `;
 
 export const BaseStepButton = styled.button`

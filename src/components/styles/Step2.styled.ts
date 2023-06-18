@@ -66,6 +66,8 @@ export const FormButton = styled(BaseStepButton)<FormButtonProps>`
 `;
 
 export const Advantage = styled.div`
+  display: flex;
+  align-items: center;
   width: 100%;
 `;
 
@@ -94,7 +96,7 @@ export const RemoveButton = styled(FaTrash)`
   height: 14px;
   margin-right: 5px;
   position: relative;
-  top: 2px;
+  top: -5px;
   cursor: pointer;
 
   &:hover {
