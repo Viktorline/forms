@@ -138,8 +138,12 @@ const Step1: React.FC<StepProps> = ({ onNext }) => {
               className={formik.touched.sex && formik.errors.sex ? 'error' : undefined}
             >
               <option value='null'>Not choosen</option>
-              <option value='man'>man</option>
-              <option value='woman'>woman</option>
+              <option value='man' id='field-sex-option-man'>
+                man
+              </option>
+              <option value='woman' id='field-sex-option-woman'>
+                woman
+              </option>
             </FormSelect>
             <FormHelperText
               title='Required to choose'

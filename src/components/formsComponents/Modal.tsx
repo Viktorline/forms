@@ -32,7 +32,9 @@ const Modal: React.FC<ModalProps> = ({ onClose, message, isOpen, successful }) =
       <ModalContent>
         <h2>{message}</h2>
         {successful ? <MdCheckCircle size={90} color='green' /> : <MdClose size={90} color='red' />}
-        <FormButton onClick={handleButtonClick}>{successful ? 'To main page' : 'Close'}</FormButton>
+        <FormButton id={successful ? 'button-to-main' : 'button-close'} onClick={handleButtonClick}>
+          {successful ? 'To main page' : 'Close'}
+        </FormButton>
       </ModalContent>
     </ModalContainer>
   );

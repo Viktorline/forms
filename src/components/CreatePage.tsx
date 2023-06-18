@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { nextStep, previousStep, selectStep } from '../features/stepSlice';
 import { FaCheck } from 'react-icons/fa';
 
-import { Wrapper } from './styles/Wrapper.styled';
+import { Wrapper } from './styles/BaseStyles';
 import { SliderWrapper, Slider, Step } from './styles/Stepper.styled';
 
 import Step1 from './formsComponents/Step1';

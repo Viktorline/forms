@@ -63,14 +63,11 @@ const Step3: React.FC<StepProps> = ({ onBack }) => {
   });
 
   const handleAboutChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const text = event.target.value;
     formik.handleChange(event);
-    const count = text.replace(/\s/g, '').length;
-    setCharCount(count);
   };
 
   useEffect(() => {
-    setCharCount(formik.values.about.length);
+    setCharCount(formik.values.about.replace(/\s+/g, '').length);
   }, [formik.values.about]);
 
   return (
@@ -88,6 +85,7 @@ const Step3: React.FC<StepProps> = ({ onBack }) => {
           <FormLabel>About</FormLabel>
           <TextArea
             name='about'
+            id='field-about'
             value={formik.values.about}
             onChange={handleAboutChange}
             onBlur={formik.handleBlur}
@@ -115,7 +113,7 @@ const Step3: React.FC<StepProps> = ({ onBack }) => {
             <FormButton variant='back' id='button-back' type='button' onClick={onBack}>
               Previous
             </FormButton>
-            <FormButton variant='send' id='button-next' type='submit'>
+            <FormButton variant='send' id='button-send' type='submit'>
               Send
             </FormButton>
           </Controls>

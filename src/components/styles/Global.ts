@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     background: #f4f4f5;
-    color: #212830;
+    color: #333333;
     font-family: 'SB Sans Interface', sans-serif;
     font-size: 20px;
     font-weight: 400;

@@ -1,64 +1,39 @@
 import styled from 'styled-components';
+import {
+  BaseFormBlock,
+  BaseFormContainer,
+  BaseFormHelperText,
+  BaseFormLabel,
+  BaseForms,
+  BaseInput,
+  BaseMainContent,
+  BaseStepButton,
+  BaseControls,
+} from './BaseStyles';
 
 type FormButtonProps = {
   variant: 'back' | 'forward';
 };
 
-export const MainContent = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: start;
-  width: 100%;
-  height: 100%;
-  padding: 24px 110px;
-  color: #333333;
-`;
+export const MainContent = styled(BaseMainContent)``;
 
-export const FormLabel = styled.label`
-  margin-bottom: 7px;
-`;
+export const FormBlock = styled(BaseFormBlock)``;
 
-export const FormInput = styled.input`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
+export const Forms = styled(BaseForms)``;
+
+export const FormContainer = styled(BaseFormContainer)``;
+
+export const FormLabel = styled(BaseFormLabel)``;
+
+export const FormInput = styled(BaseInput)`
   max-width: 300px;
-  height: 44px;
 `;
 
-export const FormSelect = styled.select`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  max-width: 300px;
-  height: 44px;
-  background-color: white;
-  color: #333333;
-
-  option {
-    background: white;
-    font-size: 14px;
-    color: #333333;
-  }
-`;
-
-export const Controls = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  padding: 39px 0;
-`;
-
-export const FormButton = styled.button<FormButtonProps>`
-  padding: 10px;
-  border-radius: 4px;
+export const FormHelperText = styled(BaseFormHelperText)`
   cursor: pointer;
-  width: 73px;
-  height: 44px;
+`;
 
+export const FormButton = styled(BaseStepButton)<FormButtonProps>`
   ${({ variant }) =>
     variant === 'forward'
       ? `
@@ -78,43 +53,21 @@ export const FormButton = styled.button<FormButtonProps>`
             border: 2px solid #3f41b3;
           }
         `}
-
-  &:active {
-    background-color: #2c2e8c;
-  }
 `;
 
-export const FormBlock = styled.form`
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
+export const FormSelect = styled.select`
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   width: 100%;
-  margin-bottom: 23px;
-  position: relative;
-`;
+  max-width: 300px;
+  height: 44px;
+  background-color: white;
 
-export const FormHelperText = styled.p`
-  line-height: 1;
-  font-size: 11px;
-  cursor: pointer;
-`;
-
-export const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  margin-bottom: 0px;
-
-  .error {
-    border-color: red;
-  }
-
-  .error-message {
-    color: red;
+  option {
+    background: white;
+    font-size: 14px;
   }
 `;
 
-export const Forms = styled.div`
-  margin-bottom: 23px;
-`;
+export const Controls = styled(BaseControls)``;

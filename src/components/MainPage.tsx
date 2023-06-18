@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { updateData } from '../features/userSlice';
 
-import { Wrapper } from './styles/Wrapper.styled';
+import { Wrapper } from './styles/BaseStyles';
 import {
   MainContent,
   ProfileBlock,
@@ -36,8 +36,8 @@ const MainPage = () => {
 
   const formik = useFormik({
     initialValues: {
-      phone: phone || '',
-      email: email || '',
+      phone: phone || '+7 (913) 877-69-32',
+      email: email || 'viktormurzinwork@gmail.com',
     },
     validationSchema: mainPageValidationSchema,
     enableReinitialize: true,
@@ -55,11 +55,11 @@ const MainPage = () => {
           <InfoContainer>
             <Name>Victor Murzin</Name>
             <Links>
-              <Link href='https://t.me/victor_murzzz'>
+              <Link href='https://t.me/victor_murzzz' target='_blank' rel='noopener noreferrer'>
                 <LinkIcon />
                 Telegram
               </Link>
-              <Link href='https://github.com/Viktorline'>
+              <Link href='https://github.com/Viktorline' target='_blank' rel='noopener noreferrer'>
                 <LinkIcon />
                 GitHub
               </Link>

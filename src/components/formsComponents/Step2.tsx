@@ -96,6 +96,7 @@ const Step2: React.FC<StepProps> = ({ onNext, onBack }) => {
                   value={advantage.value}
                   onChange={formik.handleChange}
                   placeholder='Placeholder'
+                  autoComplete='off'
                 />
                 <RemoveButton
                   id={`button-remove-${advantage.id}`}

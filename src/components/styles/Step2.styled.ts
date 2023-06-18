@@ -1,53 +1,49 @@
 import styled from 'styled-components';
 import { FaTrash } from 'react-icons/fa';
+import {
+  BaseInput,
+  BaseMainContent,
+  BaseFormBlock,
+  BaseFormContainer,
+  BaseFormLabel,
+  BaseForms,
+  BaseStepButton,
+  BaseFormHelperText,
+  BaseControls,
+} from './BaseStyles';
 
 type FormButtonProps = {
   variant: 'back' | 'forward' | 'add' | 'delete';
 };
 
-export const MainContent = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: start;
-  width: 100%;
-  height: 100%;
-  padding: 24px 110px;
-  color: #333333;
+export const MainContent = styled(BaseMainContent)``;
+
+export const FormBlock = styled(BaseFormBlock)``;
+
+export const Forms = styled(BaseForms)``;
+
+export const FormContainer = styled(BaseFormContainer)`
+  position: relative;
 `;
 
-export const FormBlock = styled.form`
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  width: 100%;
-  margin-bottom: 23px;
-`;
+export const FormLabel = styled(BaseFormLabel)``;
 
-//////////////////////////////////////////////////////
-
-export const FormLabel = styled.label`
-  margin-bottom: 7px;
-`;
-
-export const FormInput = styled.input`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
+export const FormInput = styled(BaseInput)`
   max-width: 300px;
-  height: 44px;
   margin-right: 19px;
   margin-bottom: 8px;
 `;
 
-export const FormButton = styled.button<FormButtonProps>`
-  padding: 10px;
-  border-radius: 4px;
+export const FormHelperText = styled(BaseFormHelperText)`
+  position: absolute;
+  color: red;
+  bottom: 0;
   cursor: pointer;
-  width: 73px;
-  height: 44px;
+`;
 
+export const FormSmallLabel = styled.label``;
+
+export const FormButton = styled(BaseStepButton)<FormButtonProps>`
   ${({ variant }) =>
     variant === 'forward'
       ? `
@@ -67,10 +63,10 @@ export const FormButton = styled.button<FormButtonProps>`
             border: 2px solid #3f41b3;
           }
         `}
+`;
 
-  &:active {
-    background-color: #2c2e8c;
-  }
+export const Advantage = styled.div`
+  width: 100%;
 `;
 
 export const FormAdvantagesButton = styled.button<FormButtonProps>`
@@ -85,6 +81,11 @@ export const FormAdvantagesButton = styled.button<FormButtonProps>`
   border-color: #5558fa;
   color: #5558fa;
   margin-bottom: 24px;
+
+  &:hover {
+    background-color: rgba(63, 65, 179, 0.3);
+    border: 2px solid #3f41b3;
+  }
 `;
 
 export const RemoveButton = styled(FaTrash)`
@@ -95,9 +96,11 @@ export const RemoveButton = styled(FaTrash)`
   position: relative;
   top: 2px;
   cursor: pointer;
+
+  &:hover {
+    color: darkred;
+  }
 `;
-////////////////////////////////////////////////
-export const FormSmallLabel = styled.label``;
 
 export const CheckboxGroup = styled.div`
   display: flex;
@@ -119,7 +122,6 @@ export const Checkbox = styled.div`
   }
 `;
 
-//////////////////////////////////////////////////////
 export const RadioGroup = styled.div`
   display: flex;
   flex-direction: column;
@@ -138,44 +140,4 @@ export const Radio = styled.div`
   }
 `;
 
-/////////////////////////////////////////////////////
-
-export const Controls = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  padding: 39px 0;
-`;
-
-export const FormHelperText = styled.p`
-  position: absolute;
-  color: red;
-  bottom: 0;
-  line-height: 1;
-  font-size: 11px;
-  cursor: pointer;
-`;
-
-export const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  margin-bottom: 0px;
-
-  .error {
-    border-color: red;
-  }
-
-  .error-message {
-    color: red;
-  }
-`;
-
-export const Forms = styled.div`
-  margin-bottom: 23px;
-`;
-
-export const Advantage = styled.div`
-  width: 100%;
-`;
+export const Controls = styled(BaseControls)``;

@@ -1,17 +1,65 @@
 import styled from 'styled-components';
 import { FaFolder } from 'react-icons/fa';
 import InputMask from 'react-input-mask';
-import { BaseButton, BaseInput } from './BaseStyles';
+import {
+  BaseButton,
+  BaseInput,
+  BaseMainContent,
+  BaseFormBlock,
+  BaseFormContainer,
+  BaseFormLabel,
+  BaseForms,
+  BaseFormHelperText,
+} from './BaseStyles';
 
-export const MainContent = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: start;
-  width: 100%;
-  height: 100%;
+export const MainContent = styled(BaseMainContent)`
   padding: 24px;
   margin-bottom: 245px;
+`;
+
+export const FormContainer = styled(BaseFormContainer)`
+  position: relative;
+
+  .error-message {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+`;
+
+export const Forms = styled(BaseForms)``;
+
+export const FormLabel = styled(BaseFormLabel)``;
+
+export const FormBlock = styled(BaseFormBlock)``;
+
+export const FormHelperText = styled(BaseFormHelperText)``;
+
+export const FormButton = styled(BaseButton)`
+  background-color: #5558fa;
+  color: white;
+
+  &:hover {
+    background-color: #3f41b3;
+  }
+
+  &:active {
+    background-color: #2c2e8c;
+  }
+`;
+
+export const FormInput = styled(BaseInput)`
+  margin-bottom: 25px;
+`;
+
+export const MaskedInput = styled(InputMask)`
+  padding: 10px;
+  margin-bottom: 25px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+  height: 44px;
 `;
 
 export const ProfileBlock = styled.div`
@@ -31,6 +79,7 @@ export const Logo = styled.div`
   align-items: center;
   line-height: 80px;
   margin-right: 24px;
+  cursor: default;
 `;
 
 export const InfoContainer = styled.div`
@@ -58,6 +107,10 @@ export const LinkIcon = styled(FaFolder)`
   margin-right: 5px;
   position: relative;
   top: 2px;
+
+  &:hover {
+    color: #5558fa;
+  }
 `;
 
 export const Link = styled.a`
@@ -66,6 +119,15 @@ export const Link = styled.a`
   margin-right: 20px;
   position: relative;
   bottom: 2px;
+  color: #333333;
+
+  &:hover {
+    color: #5558fa;
+  }
+
+  a:visited {
+    color: #5558fa;
+  }
 `;
 
 export const Line = styled.div`
@@ -74,84 +136,4 @@ export const Line = styled.div`
   background-color: #b3b3b3;
   opacity: 0.8;
   margin-bottom: 24px;
-`;
-
-export const FormBlock = styled.form`
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  width: 100%;
-  margin-bottom: 23px;
-  position: relative;
-`;
-
-export const FormButton = styled(BaseButton)`
-  padding: 10px;
-  background-color: #5558fa;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 79px;
-  height: 44px;
-
-  &:hover {
-    background-color: #3f41b3;
-  }
-
-  &:active {
-    background-color: #2c2e8c;
-  }
-`;
-
-export const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  margin-bottom: 0px;
-
-  .error {
-    border-color: red;
-  }
-
-  .error-message {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    color: red;
-  }
-`;
-
-export const Forms = styled.div`
-  margin-bottom: 23px;
-`;
-
-export const FormLabel = styled.label`
-  margin-bottom: 7px;
-`;
-
-export const FormInput = styled(BaseInput)`
-  padding: 10px;
-  margin-bottom: 25px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  max-width: 400px;
-  height: 44px;
-`;
-
-export const MaskedInput = styled(InputMask)`
-  padding: 10px;
-  margin-bottom: 25px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  max-width: 400px;
-  height: 44px;
-`;
-
-export const FormHelperText = styled.p`
-  line-height: 1;
-  font-size: 11px;
 `;
